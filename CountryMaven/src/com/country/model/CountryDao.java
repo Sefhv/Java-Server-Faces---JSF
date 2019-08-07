@@ -19,8 +19,8 @@ public class CountryDao {
 		List<Country> countryList = new ArrayList<>(1);
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
-			transaction = session.beginTransaction();
-			countryList = session.createQuery("from Country", Country.class).list();
+			transaction = session.beginTransaction();		
+			countryList = session.createQuery("from Country", Country.class).list();			
 			return countryList;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -32,9 +32,17 @@ public class CountryDao {
 	}
 
 	public static void addCountry(Country c) {
+		List<Integer> countryList;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
-			transaction = session.beginTransaction();
+			transaction = session.beginTransaction();			
+			countryList = session.createQuery("select id from Country", Integer.class).list();
+			int id = countryList.get(0);
+			for(Integer ct: countryList) {
+				if(id<ct)
+					id = ct;
+			}			
+			c.setId(id+1);
 			session.save(c);
 			transaction.commit();
 		} catch (Exception e) {

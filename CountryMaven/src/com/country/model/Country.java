@@ -3,35 +3,39 @@ package com.country.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity(name="country")
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+@Table(name="country")
 public class Country {
 	
 	@Id
+	@GenericGenerator(name = "generator", strategy = "increment")
+	@Column(name = "id", unique = true)
 	private int id;
 	
-	@Column
+	@Column(name="name")
 	private String name;
 	
-	@Column
+	@Column(name="description")
 	private String description;
 	
-	@Column
+	@Column(name="area")
 	private int area;
 	
-	@Column
+	@Column(name="population")
 	private int population;
 
-	@Column
+	@Column(name="war")
 	private String war;
 
 	public Country() {
 
 	}
 
-	public Country(int id, String name, String description, int area, int population, String war) {
-		super();
-		this.id = id;
+	public Country(String name, String description, int area, int population, String war) {
 		this.name = name;
 		this.description = description;
 		this.area = area;

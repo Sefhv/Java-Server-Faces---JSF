@@ -40,12 +40,6 @@ public class CountryBean implements Serializable {
 
 	public String saveCountry() {
 		try {
-			int id_aux = 0;
-			for (Country c : countryList)
-				if (id_aux < c.getId())
-					id_aux = c.getId();
-
-			country.setId(id_aux + 1);
 			CountryDao.addCountry(country);
 			countryList.add(country);
 			statusText = "El pais ha sido guardado correctamente";

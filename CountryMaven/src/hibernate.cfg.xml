@@ -14,8 +14,8 @@
 		<property name="show_sql">true</property> <!-- Show SQL in console -->
 		<property name="format_sql">true</property> <!-- Show SQL formatted -->
 
-		<mapping resource="Country.hbm.xml" />
-		<!-- <mapping class="com.country.model.Country.java" /> -->
+		<!-- <mapping resource="com/country/model/Country.hbm.xml" /> -->  
+		<mapping class="com.country.model.Country" />	
 
 	</session-factory>
 </hibernate-configuration>
