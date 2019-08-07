@@ -1,20 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml"
+<f:view xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head>
-	<title>Hola mundo</title>
-	<link rel="stylesheet"
-		href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-</h:head>
-<h:body>
-	<div class="container">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<div class="container" id="createView">
 		<div class="row">
 			<div class="col-sm-4 offset-md-4">
-				<h:form>
+				<h:form id="createForm">
 					<div class="form-group">
 						<h:outputLabel value="Nombre: " />
 						<h:inputText class="form-control"
@@ -45,14 +37,17 @@
 						</h:selectOneMenu>
 					</div>
 					<div class="form-group">
-						<h:commandButton action="#{countryBean.saveCountry()}"
-							class="btn btn-primary" value="Crear Pais" />
-						<h:commandButton action="#{countryBean.goIndex()}"
-							class="btn btn-secondary offset-md-4" value="Regresar" />
+						<h:commandButton id="createCountry" action="#{countryBean.saveCountry()}"
+							class="btn btn-primary" value="Crear Pais" >
+							<f:ajax execute="createCountry" render="@all"/>	
+						</h:commandButton>
+						<h:commandButton id="goBackCreateCountry" action="#{countryBean.goIndex()}"
+							class="btn btn-secondary offset-md-4" value="Regresar">
+							<f:ajax execute="goBackCreateCountry" render="@all"/>
+						</h:commandButton>
 					</div>
 				</h:form>
 			</div>
 		</div>
 	</div>
-</h:body>
-</html>
+</f:view>
