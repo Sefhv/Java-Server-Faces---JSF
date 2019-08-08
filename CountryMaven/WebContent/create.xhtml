@@ -39,7 +39,7 @@
 					<div class="form-group">
 						<h:commandButton id="createCountry" action="#{countryBean.saveCountry()}"
 							class="btn btn-primary" value="Crear Pais" >
-							<f:ajax execute="createCountry" render="@all"/>	
+							<f:ajax execute="@form" render="@all countryListForm:dataTable"/>	
 						</h:commandButton>
 						<h:commandButton id="goBackCreateCountry" action="#{countryBean.goIndex()}"
 							class="btn btn-secondary offset-md-4" value="Regresar">

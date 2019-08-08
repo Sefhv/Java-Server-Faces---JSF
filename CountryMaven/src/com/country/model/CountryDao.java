@@ -9,13 +9,13 @@ import org.hibernate.Transaction;
 import com.hibernate.connection.HibernateUtil;
 
 public class CountryDao {
-	static Session session;
-	static Transaction transaction = null;
+	private Session session;
+	private Transaction transaction = null;
 
 	public CountryDao() {
 	}
 
-	public static List<Country> loadCountries() {
+	public List<Country> loadCountries() {
 		List<Country> countryList = new ArrayList<>(1);
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
@@ -31,7 +31,7 @@ public class CountryDao {
 		}
 	}
 
-	public static void addCountry(Country c) {
+	public void addCountry(Country c) {
 		List<Integer> countryList;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
@@ -53,7 +53,7 @@ public class CountryDao {
 		}
 	}
 
-	public static void editCountry(Country c) {
+	public void editCountry(Country c) {
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
@@ -67,7 +67,7 @@ public class CountryDao {
 		}
 	}
 
-	public static void deleteCountry(Country c) {
+	public void deleteCountry(Country c) {
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
@@ -81,17 +81,20 @@ public class CountryDao {
 		}
 	}
 	
-	public static void readCountry(Country c) {
-		try {
-			session = HibernateUtil.getSessionFactory().openSession();
-			transaction = session.beginTransaction();			
-			//Implements is needed	
-			transaction.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			transaction.rollback();
-		} finally {
-			session.close();
-		}
+	public Session getSession() {
+		return session;
 	}
+
+	public void setSession(Session session) {
+		this.session = session;
+	}
+
+	public Transaction getTransaction() {
+		return transaction;
+	}
+
+	public void setTransaction(Transaction transaction) {
+		this.transaction = transaction;
+	}	
+	
 }

@@ -8,7 +8,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import com.country.model.Country;
-import com.country.model.CountryDao;
 
 @Named(value = "countryBean")
 @SessionScoped
@@ -16,15 +15,17 @@ public class CountryBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Country country;
-	private List<Country> countryList;
-	private String statusText = "";
-
 	private boolean showList;
 	private boolean showCreate;
 	private boolean showRead;
 	private boolean showEdit;
-
+	
+	private Country country;
+	private List<Country> countryList;
+	private String statusText = "";
+	
+	private CountryController controller = new CountryController();
+	
 	public CountryBean() {
 		init();
 		readCountry();
@@ -41,7 +42,7 @@ public class CountryBean implements Serializable {
 
 	public void readCountry() {
 		try {
-			countryList = CountryDao.loadCountries();
+			countryList = controller.loadCountries();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -49,7 +50,7 @@ public class CountryBean implements Serializable {
 
 	public void saveCountry() {
 		try {
-			CountryDao.addCountry(country);
+			controller.addCountry(country);
 			countryList.add(country);
 			showList = true;
 			showCreate = false;
@@ -64,7 +65,7 @@ public class CountryBean implements Serializable {
 	
 	public void editCountry() {
 		try {
-			CountryDao.editCountry(country);
+			controller.editCountry(country);
 			showList = true;
 			showCreate = false;
 			showRead = false;
@@ -108,7 +109,7 @@ public class CountryBean implements Serializable {
 
 	public void goDeleteCountry(Country c) {
 		try {
-			CountryDao.deleteCountry(c);
+			controller.deleteCountry(c);
 			countryList.remove(c);
 			statusText = "El pais ha sido eliminado correctamente";
 		} catch (Exception e) {
@@ -184,4 +185,12 @@ public class CountryBean implements Serializable {
 	public void setShowRead(boolean showRead) {
 		this.showRead = showRead;
 	}
+
+	public CountryController getController() {
+		return controller;
+	}
+
+	public void setController(CountryController controller) {
+		this.controller = controller;
+	}	
 }

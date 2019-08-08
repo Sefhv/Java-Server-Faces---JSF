@@ -39,7 +39,7 @@
 					<div class="form-group">
 						<h:commandButton action="#{countryBean.editCountry()}"
 							class="btn btn-primary" value="Editar Pais">
-							<f:ajax execute="editCountry" render="@all" />
+							<f:ajax execute="@form" render="@all" />
 						</h:commandButton>
 						<h:commandButton action="#{countryBean.goIndex()}"
 							class="btn btn-secondary offset-md-4" value="Regresar">
