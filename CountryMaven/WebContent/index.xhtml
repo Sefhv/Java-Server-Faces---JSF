@@ -7,25 +7,23 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Crear Paises</title>
-	<link rel="stylesheet"
-		href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-	<link rel="stylesheet"
-		href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" />
 </h:head>
-<h:body>		
-	<ui:fragment rendered="#{countryBean.showList}">
-		<ui:include src="/countryList.xhtml" />
-	</ui:fragment>
-	<ui:fragment rendered="#{countryBean.showCreate}">
-		<ui:include src="/create.xhtml" />
-	</ui:fragment>
-	<ui:fragment rendered="#{countryBean.showEdit}">
-		<ui:include src="/edit.xhtml" />
-	</ui:fragment>
-	<ui:fragment rendered="#{countryBean.showRead}">
-		<ui:include src="/read.xhtml" />
-	</ui:fragment>		
+<h:body>
+	<ui:composition template="/Template/template.xhtml">
+		<ui:define name="content">
+			<ui:fragment rendered="#{countryBean.showList}">
+				<ui:include src="/countryList.xhtml" />
+			</ui:fragment>
+			<ui:fragment rendered="#{countryBean.showCreate}">
+				<ui:include src="/create.xhtml" />
+			</ui:fragment>
+			<ui:fragment rendered="#{countryBean.showEdit}">
+				<ui:include src="/edit.xhtml" />
+			</ui:fragment>
+			<ui:fragment rendered="#{countryBean.showRead}">
+				<ui:include src="/read.xhtml" />
+			</ui:fragment>
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>

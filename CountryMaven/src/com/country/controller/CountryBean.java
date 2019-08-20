@@ -1,6 +1,5 @@
 package com.country.controller;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,10 +7,11 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import com.country.model.Country;
+import com.main.src.LoggerMain;
 
 @Named(value = "countryBean")
 @SessionScoped
-public class CountryBean implements Serializable {
+public class CountryBean extends LoggerMain {
 
 	private static final long serialVersionUID = 1L;
 
@@ -23,6 +23,7 @@ public class CountryBean implements Serializable {
 	private Country country;
 	private List<Country> countryList;
 	private String statusText = "";
+	
 	
 	private CountryController controller = new CountryController();
 	
