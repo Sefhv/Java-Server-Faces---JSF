@@ -16,7 +16,7 @@
                 		
         
         <property name="java-output-path" value="/Country/build/classes"/>
-        <property name="context-root" value="Country"/>
+        <property name="context-root" value="CountryMaven"/>
                 	
     
     </wb-module>

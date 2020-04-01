@@ -17,8 +17,7 @@
 			<attribute name="owner.project.facets" value="jst.jsf;jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/USUARIO/Documents/wildfly-14.0.1.Final/modules/system/layers/base/com/sun/jsf-impl/main/jsf-impl-2.3.5.SP2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/USUARIO/Documents/Librerias/lombok.jar"/>
+	<classpathentry kind="lib" path="C:/Servers/wildfly-14.0.0.Final/modules/system/layers/base/com/sun/jsf-impl/main/jsf-impl-2.3.5.SP2.jar"/>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>

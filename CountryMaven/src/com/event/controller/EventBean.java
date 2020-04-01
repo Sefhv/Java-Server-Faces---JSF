@@ -7,11 +7,10 @@ import javax.inject.Named;
 
 @Named(value = "eventBean")
 @SessionScoped
-public class EventBean implements Serializable{
+public class EventBean implements Serializable {
 
 	public EventBean() {
-		
+
 	}
-	
-	
+
 }

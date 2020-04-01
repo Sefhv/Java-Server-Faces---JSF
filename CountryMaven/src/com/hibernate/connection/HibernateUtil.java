@@ -8,10 +8,10 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 public class HibernateUtil {
 
-	private static StandardServiceRegistry registry;
-	private static SessionFactory sessionFactory;
+	private StandardServiceRegistry registry;
+	private SessionFactory sessionFactory;
 
-	public static SessionFactory getSessionFactory() {
+	public SessionFactory getSessionFactory() {
 		if (sessionFactory == null) {
 			try {
 				// Create registry
@@ -32,9 +32,21 @@ public class HibernateUtil {
 		return sessionFactory;
 	}
 
-	public static void shutdown() {
+	public void shutdown() {
 		if (registry != null) {
 			StandardServiceRegistryBuilder.destroy(registry);
 		}
+	}
+
+	public StandardServiceRegistry getRegistry() {
+		return registry;
+	}
+
+	public void setRegistry(StandardServiceRegistry registry) {
+		this.registry = registry;
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
 	}
 }

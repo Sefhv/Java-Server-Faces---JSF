@@ -8,42 +8,43 @@ import org.hibernate.Transaction;
 
 import com.hibernate.connection.HibernateUtil;
 
-public class CountryDao {
+public class CountryDao extends HibernateUtil {
 	private Session session;
 	private Transaction transaction = null;
 
 	public CountryDao() {
+		//
 	}
 
 	public List<Country> loadCountries() {
 		List<Country> countryList = new ArrayList<>(1);
 		try {
-			session = HibernateUtil.getSessionFactory().openSession();
-			transaction = session.beginTransaction();		
-			countryList = session.createQuery("from Country", Country.class).list();			
+			session = getSessionFactory().openSession();
+			transaction = getSession().beginTransaction();
+			countryList = getSession().createQuery("from Country", Country.class).list();
 			return countryList;
 		} catch (Exception e) {
 			e.printStackTrace();
 			transaction.rollback();
 			throw e;
 		} finally {
-			session.close();
+			getSession().close();
 		}
 	}
 
 	public void addCountry(Country c) {
 		List<Integer> countryList;
 		try {
-			session = HibernateUtil.getSessionFactory().openSession();
-			transaction = session.beginTransaction();			
-			countryList = session.createQuery("select id from Country", Integer.class).list();
+			session = getSessionFactory().openSession();
+			transaction = getSession().beginTransaction();
+			countryList = getSession().createQuery("select id from Country", Integer.class).list();
 			int id = countryList.get(0);
-			for(Integer ct: countryList) {
-				if(id<ct)
+			for (Integer ct : countryList) {
+				if (id < ct)
 					id = ct;
-			}			
-			c.setId(id+1);
-			session.save(c);
+			}
+			c.setId(id + 1);
+			getSession().save(c);
 			transaction.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -55,8 +56,8 @@ public class CountryDao {
 
 	public void editCountry(Country c) {
 		try {
-			session = HibernateUtil.getSessionFactory().openSession();
-			transaction = session.beginTransaction();
+			session = getSessionFactory().openSession();
+			transaction = getSession().beginTransaction();
 			session.update(c);
 			transaction.commit();
 		} catch (Exception e) {
@@ -69,8 +70,8 @@ public class CountryDao {
 
 	public void deleteCountry(Country c) {
 		try {
-			session = HibernateUtil.getSessionFactory().openSession();
-			transaction = session.beginTransaction();
+			session = getSessionFactory().openSession();
+			transaction = getSession().beginTransaction();
 			session.delete(c);
 			transaction.commit();
 		} catch (Exception e) {
@@ -80,8 +81,9 @@ public class CountryDao {
 			session.close();
 		}
 	}
-	
+
 	public Session getSession() {
+
 		return session;
 	}
 
@@ -95,6 +97,6 @@ public class CountryDao {
 
 	public void setTransaction(Transaction transaction) {
 		this.transaction = transaction;
-	}	
-	
+	}
+
 }

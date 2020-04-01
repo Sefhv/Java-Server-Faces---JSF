@@ -19,14 +19,13 @@ public class CountryBean extends LoggerMain {
 	private boolean showCreate;
 	private boolean showRead;
 	private boolean showEdit;
-	
+
 	private Country country;
 	private List<Country> countryList;
 	private String statusText = "";
-	
-	
+
 	private CountryController controller = new CountryController();
-	
+
 	public CountryBean() {
 		init();
 		readCountry();
@@ -63,7 +62,7 @@ public class CountryBean extends LoggerMain {
 			throw e;
 		}
 	}
-	
+
 	public void editCountry() {
 		try {
 			controller.editCountry(country);
@@ -71,14 +70,13 @@ public class CountryBean extends LoggerMain {
 			showCreate = false;
 			showRead = false;
 			showEdit = false;
-			statusText = "El pais ha sido editado correctamente";			
+			statusText = "El pais ha sido editado correctamente";
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
 		}
 	}
 
-	
 	public void goAddCountry() {
 		showList = false;
 		showCreate = true;
@@ -193,5 +191,5 @@ public class CountryBean extends LoggerMain {
 
 	public void setController(CountryController controller) {
 		this.controller = controller;
-	}	
+	}
 }
