@@ -7,8 +7,10 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.hibernate.connection.HibernateUtil;
+import com.main.src.LoggerMain;
 
 public class CountryDao extends HibernateUtil {
+
 	private Session session;
 	private Transaction transaction = null;
 
@@ -24,7 +26,7 @@ public class CountryDao extends HibernateUtil {
 			countryList = getSession().createQuery("from Country", Country.class).list();
 			return countryList;
 		} catch (Exception e) {
-			e.printStackTrace();
+			LoggerMain.getLogger().error(e);
 			transaction.rollback();
 			throw e;
 		} finally {
@@ -47,7 +49,7 @@ public class CountryDao extends HibernateUtil {
 			getSession().save(c);
 			transaction.commit();
 		} catch (Exception e) {
-			e.printStackTrace();
+			LoggerMain.getLogger().error(e);
 			transaction.rollback();
 		} finally {
 			session.close();
@@ -61,7 +63,7 @@ public class CountryDao extends HibernateUtil {
 			session.update(c);
 			transaction.commit();
 		} catch (Exception e) {
-			e.printStackTrace();
+			LoggerMain.getLogger().error(e);
 			transaction.rollback();
 		} finally {
 			session.close();
@@ -83,7 +85,6 @@ public class CountryDao extends HibernateUtil {
 	}
 
 	public Session getSession() {
-
 		return session;
 	}
 

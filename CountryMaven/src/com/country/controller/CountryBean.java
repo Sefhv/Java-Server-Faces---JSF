@@ -1,5 +1,6 @@
 package com.country.controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import com.main.src.LoggerMain;
 
 @Named(value = "countryBean")
 @SessionScoped
-public class CountryBean extends LoggerMain {
+public class CountryBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -22,7 +23,7 @@ public class CountryBean extends LoggerMain {
 
 	private Country country;
 	private List<Country> countryList;
-	private String statusText = "";
+	private String statusText;
 
 	private CountryController controller = new CountryController();
 
@@ -38,13 +39,14 @@ public class CountryBean extends LoggerMain {
 		showCreate = false;
 		showRead = false;
 		showEdit = false;
+		statusText = "";
 	}
 
 	public void readCountry() {
 		try {
 			countryList = controller.loadCountries();
 		} catch (Exception e) {
-			e.printStackTrace();
+			LoggerMain.getLogger().error(e);
 		}
 	}
 
@@ -58,7 +60,7 @@ public class CountryBean extends LoggerMain {
 			showEdit = false;
 			statusText = "El pais ha sido creado correctamente";
 		} catch (Exception e) {
-			e.printStackTrace();
+			LoggerMain.getLogger().error(e);
 			throw e;
 		}
 	}
@@ -72,7 +74,7 @@ public class CountryBean extends LoggerMain {
 			showEdit = false;
 			statusText = "El pais ha sido editado correctamente";
 		} catch (Exception e) {
-			e.printStackTrace();
+			LoggerMain.getLogger().error(e);
 			throw e;
 		}
 	}
@@ -101,7 +103,7 @@ public class CountryBean extends LoggerMain {
 			showEdit = false;
 			country = c;
 		} catch (Exception e) {
-			e.printStackTrace();
+			LoggerMain.getLogger().error(e);
 			throw e;
 		}
 	}
@@ -112,7 +114,7 @@ public class CountryBean extends LoggerMain {
 			countryList.remove(c);
 			statusText = "El pais ha sido eliminado correctamente";
 		} catch (Exception e) {
-			e.printStackTrace();
+			LoggerMain.getLogger().error(e);
 			throw e;
 		}
 	}

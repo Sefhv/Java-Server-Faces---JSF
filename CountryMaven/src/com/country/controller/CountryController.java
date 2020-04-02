@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.country.model.Country;
 import com.country.model.CountryDao;
+import com.main.src.LoggerMain;
 
 public class CountryController {
 
@@ -15,10 +16,9 @@ public class CountryController {
 
 	public List<Country> loadCountries() {
 		try {
-			List<Country> countryList = countryDao.loadCountries();
-			return countryList;
+			return countryDao.loadCountries();
 		} catch (Exception e) {
-			e.printStackTrace();
+			LoggerMain.getLogger().error(e);
 			throw e;
 		}
 	}
@@ -27,7 +27,7 @@ public class CountryController {
 		try {
 			countryDao.addCountry(c);
 		} catch (Exception e) {
-			e.printStackTrace();
+			LoggerMain.getLogger().error(e);
 			throw e;
 		}
 	}
@@ -36,7 +36,7 @@ public class CountryController {
 		try {
 			countryDao.editCountry(c);
 		} catch (Exception e) {
-			e.printStackTrace();
+			LoggerMain.getLogger().error(e);
 			throw e;
 		}
 	}
@@ -45,7 +45,7 @@ public class CountryController {
 		try {
 			countryDao.deleteCountry(c);
 		} catch (Exception e) {
-			e.printStackTrace();
+			LoggerMain.getLogger().error(e);
 			throw e;
 		}
 	}

@@ -8,24 +8,26 @@ import org.junit.Test;
 
 public class LoggerMain implements Serializable {
 
-	private Logger logger;
+	private static final long serialVersionUID = 1L;
+
+	private static Logger logger;
 
 	public LoggerMain() {
-		logger = LogManager.getLogger();
+
 	}
 
 	@Test
 	public void testLogger() {
-		logger.error("Error message");
+		getLogger().error("Error message");
 	}
 
-	public Logger getLogger() {
+	public static Logger getLogger() {
 		if (logger == null)
 			logger = LogManager.getLogger();
 		return logger;
 	}
 
-	public void setLogger(Logger logger) {
-		this.logger = logger;
+	public static void setLogger(Logger logger) {
+		LoggerMain.logger = logger;
 	}
 }
