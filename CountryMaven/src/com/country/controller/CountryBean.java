@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.SessionScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import com.country.model.Country;
 import com.main.src.LoggerMain;
 
 @Named(value = "countryBean")
-@SessionScoped
+@ViewScoped
 public class CountryBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -25,20 +25,26 @@ public class CountryBean implements Serializable {
 	private List<Country> countryList;
 	private String statusText;
 
-	private CountryController controller = new CountryController();
+	private CountryController controller;
 
 	public CountryBean() {
 		init();
+		hideAll();
+		goIndex();
 		readCountry();
 	}
 
-	public void init() {
-		country = new Country();
-		countryList = new ArrayList<>(1);
-		showList = true;
+	private void hideAll() {
+		showList = false;
 		showCreate = false;
 		showRead = false;
 		showEdit = false;
+	}
+
+	private void init() {
+		country = new Country();
+		controller = new CountryController();
+		countryList = new ArrayList<>(1);
 		statusText = "";
 	}
 
@@ -54,10 +60,8 @@ public class CountryBean implements Serializable {
 		try {
 			controller.addCountry(country);
 			countryList.add(country);
+			hideAll();
 			showList = true;
-			showCreate = false;
-			showRead = false;
-			showEdit = false;
 			statusText = "El pais ha sido creado correctamente";
 		} catch (Exception e) {
 			LoggerMain.getLogger().error(e);
@@ -68,10 +72,8 @@ public class CountryBean implements Serializable {
 	public void editCountry() {
 		try {
 			controller.editCountry(country);
+			hideAll();
 			showList = true;
-			showCreate = false;
-			showRead = false;
-			showEdit = false;
 			statusText = "El pais ha sido editado correctamente";
 		} catch (Exception e) {
 			LoggerMain.getLogger().error(e);
@@ -80,27 +82,21 @@ public class CountryBean implements Serializable {
 	}
 
 	public void goAddCountry() {
-		showList = false;
+		hideAll();
 		showCreate = true;
-		showRead = false;
-		showEdit = false;
 		country = new Country();
 	}
 
 	public void goEditCountry(Country c) {
-		showList = false;
-		showCreate = false;
-		showRead = false;
+		hideAll();
 		showEdit = true;
 		country = c;
 	}
 
 	public void goShowCountry(Country c) {
 		try {
-			showList = false;
-			showCreate = false;
+			hideAll();
 			showRead = true;
-			showEdit = false;
 			country = c;
 		} catch (Exception e) {
 			LoggerMain.getLogger().error(e);
@@ -120,11 +116,9 @@ public class CountryBean implements Serializable {
 	}
 
 	public void goIndex() {
-		statusText = "";
+		hideAll();
 		showList = true;
-		showCreate = false;
-		showRead = false;
-		showEdit = false;
+		statusText = "";
 	}
 
 	/**
