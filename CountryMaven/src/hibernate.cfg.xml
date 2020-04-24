@@ -3,10 +3,10 @@
 "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
-		<property name="connection.url">jdbc:postgresql://localhost:5433/country</property> <!-- BD Mane -->
+		<property name="connection.url">jdbc:postgresql://database-1.cnk2x62x05lj.us-east-2.rds.amazonaws.com:5432/country</property> <!-- BD Mane -->
 		<property name="connection.driver_class">org.postgresql.Driver</property> <!-- DB Driver -->
 		<property name="connection.username">postgres</property> <!-- DB User -->
-		<property name="connection.password">gyvsan4ever</property> <!-- DB Password -->
+		<property name="connection.password">45by1dBMhcuqbMkXAqZt</property> <!-- DB Password -->
 
 		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property> <!-- DB Dialect -->
 		<property name="hbm2ddl.auto">update</property> <!-- create / create-drop / update -->
@@ -14,8 +14,8 @@
 		<property name="show_sql">true</property> <!-- Show SQL in console -->
 		<property name="format_sql">true</property> <!-- Show SQL formatted -->
 
-		<!-- <mapping resource="com/country/model/Country.hbm.xml" /> -->  
-		<mapping class="com.country.model.Country" />	
+		<!-- <mapping resource="com/country/model/Country.hbm.xml" /> -->
+		<mapping class="com.country.model.Country" />
 
 	</session-factory>
 </hibernate-configuration>

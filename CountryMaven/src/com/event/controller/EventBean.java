@@ -1,16 +1,20 @@
 package com.event.controller;
 
 import java.io.Serializable;
-
-import javax.enterprise.context.SessionScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 @Named(value = "eventBean")
-@SessionScoped
+@ViewScoped
 public class EventBean implements Serializable {
 
-	public EventBean() {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
+	public EventBean() {
+		// Default constructor
 	}
 
 }

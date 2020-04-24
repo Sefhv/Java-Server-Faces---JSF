@@ -3,25 +3,25 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 4/08/2019, 10:27:29 p. m. by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="com.country.model.Country" table="COUNTRY">
-        <id name="id" type="int">
-            <column name="ID" />
-            <generator class="assigned" />
-        </id>
-        <property name="name" type="java.lang.String">
-            <column name="NAME" />
-        </property>
-        <property name="description" type="java.lang.String">
-            <column name="DESCRIPTION" />
-        </property>
-        <property name="area" type="int">
-            <column name="AREA" />
-        </property>
-        <property name="population" type="int">
-            <column name="POPULATION" />
-        </property>
-        <property name="war" type="java.lang.String">
-            <column name="WAR" />
-        </property>
-    </class>
+	<class name="com.country.model.Country" table="COUNTRY">
+		<id name="id" type="int">
+			<column name="ID" />
+			<generator class="assigned" />
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="NAME" />
+		</property>
+		<property name="description" type="java.lang.String">
+			<column name="DESCRIPTION" />
+		</property>
+		<property name="area" type="int">
+			<column name="AREA" />
+		</property>
+		<property name="population" type="int">
+			<column name="POPULATION" />
+		</property>
+		<property name="war" type="java.lang.String">
+			<column name="WAR" />
+		</property>
+	</class>
 </hibernate-mapping>

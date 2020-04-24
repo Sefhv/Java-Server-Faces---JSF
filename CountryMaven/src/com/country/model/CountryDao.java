@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.junit.Test;
 
 import com.hibernate.connection.HibernateUtil;
 import com.main.src.LoggerMain;
@@ -17,7 +18,7 @@ public class CountryDao extends HibernateUtil {
 	public CountryDao() {
 		//
 	}
-
+	
 	public List<Country> loadCountries() {
 		List<Country> countryList = new ArrayList<>(1);
 		try {
