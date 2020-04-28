@@ -1,0 +1,1 @@
+# Este archivo se utilizara para crear nuevas entidades en la base de datos

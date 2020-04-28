@@ -3,10 +3,8 @@ package com.country.controller;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-
 import com.country.model.Country;
 import com.main.src.LoggerMain;
 
@@ -50,7 +48,7 @@ public class CountryBean implements Serializable {
 
 	public void readCountry() {
 		try {
-			countryList = controller.loadCountries();
+			// countryList = controller.loadCountries();
 		} catch (Exception e) {
 			LoggerMain.getLogger().error(e);
 		}
@@ -58,7 +56,7 @@ public class CountryBean implements Serializable {
 
 	public void saveCountry() {
 		try {
-			controller.addCountry(country);
+			// controller.addCountry(country);
 			countryList.add(country);
 			hideAll();
 			showList = true;
@@ -71,7 +69,7 @@ public class CountryBean implements Serializable {
 
 	public void editCountry() {
 		try {
-			controller.editCountry(country);
+			// controller.editCountry(country);
 			hideAll();
 			showList = true;
 			statusText = "El pais ha sido editado correctamente";
@@ -106,7 +104,7 @@ public class CountryBean implements Serializable {
 
 	public void goDeleteCountry(Country c) {
 		try {
-			controller.deleteCountry(c);
+			// controller.deleteCountry(c);
 			countryList.remove(c);
 			statusText = "El pais ha sido eliminado correctamente";
 		} catch (Exception e) {
